@@ -29,7 +29,7 @@ const login = () => {
                     <div className="w-1/2 border-2 border-l-0 border-solid border-opacity-10 border-black filter shadow-xl rounded-r-xl flex flex-col items-center p-8 pb-20">
                         <HeaderLogin />
                         <ValidacoesProvider>
-                            <FormLogin isTecnico={true}/>
+                            <FormLogin />
                         </ValidacoesProvider>
                     </div>
                 </div>

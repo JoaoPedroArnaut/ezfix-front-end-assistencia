@@ -13,18 +13,11 @@ const FormDadosPessoais = ({ isTecnico }) => {
     const [dataNasc, setDataNasc] = useState('')
     const [telPrimario, setTelPrimario] = useState('')
     const [telSecundario, setTelSecundario] = useState('')
-    const [documento, setDocumento] = useState({})
 
     const { enviar, trocaPg, voltar, form } = useContext(CadastroContext)
     const { validaDadosPessoais, erros, setErros } = useContext(ValidacoesContext)
 
     useEffect(() => {
-        if (isTecnico) {
-            setDocumento({label:"cpf/cnpj",size:18})
-        }
-        else {
-            setDocumento({label:"cpf",size:14})
-        }
         for (let i in form) {
             if (i == "nome") {
                 setNome(form[i])
@@ -88,7 +81,7 @@ const FormDadosPessoais = ({ isTecnico }) => {
             <form className="w-full flex justify-between flex-wrap" onSubmit={handleSubmit}>
                 <Erros erros={erros} />
                 <Input value={nome} onChange={e => { setNome(e.target.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]/g,"")) }} label="Nome Completo" placeholder="josé roberto" alternativo={true} size="w-full" />
-                <Input maxLength={documento.size} value={cpf} onChange={e => { mascaraCpf(e.target.value, setCPF) }} label={documento.label} placeholder="XXX.XXX.XXX-XX" alternativo={true} size="w-45" />
+                <Input maxLength="18" value={cpf} onChange={e => { mascaraCpf(e.target.value, setCPF) }} label="cpf/cnpj" placeholder="XXX.XXX.XXX-XX" alternativo={true} size="w-45" />
                 <Input maxLength="10" value={dataNasc} onChange={e => { mascaraData(e.target.value, setDataNasc) }} type="text" label="Data de Nascimento" placeholder="DD/MM/AAAA" alternativo={true} size="w-45" />
                 <Input maxLength="15" value={telPrimario} onChange={e => { mascaraTel(e.target.value, setTelPrimario) }} label="Telefone Primario" placeholder="(XX)XXXXX-XXXX" alternativo={true} size="w-45" />
                 <Input maxLength="15" value={telSecundario} onChange={e => { mascaraTel(e.target.value, setTelSecundario) }} label="Telefone Secundario" placeholder="(XX)XXXXX-XXXX" alternativo={true} size="w-45" />

@@ -8,7 +8,7 @@ import { ValidacoesContext } from '../contexts/Validacoes';
 import {api} from '../api/api';
 import { SessaoContext } from '../contexts/Sessao';
 
-const FormLogin = ({isTecnico}) => {
+const FormLogin = () => {
     const router = useRouter()
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -38,19 +38,7 @@ const FormLogin = ({isTecnico}) => {
                     maxAge: 3600,
                     path: '/',
                 });
-                if(!isTecnico){
-                    setCookie(null, 'isTecnico', false, {
-                        maxAge: 3600,
-                        path: '/',
-                    });
-                    router.push('/assistencias')
-                }else {
-                    setCookie(null, 'isTecnico', true, {
-                        maxAge: 3600,
-                        path: '/',
-                    });
-                    router.push('/DashboardInicio')
-                }
+                router.push('/DashboardInicio')
             }, err => {
                 try{
                     if (err.response.status == 403){

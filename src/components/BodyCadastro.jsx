@@ -4,7 +4,7 @@ import Etapas from '../components/Etapas'
 import { CadastroContext } from '../contexts/Cadastro'
 import { ValidacoesProvider } from '../contexts/Validacoes'
 
-const BodyCadastro = ({isTecnico}) => {
+const BodyCadastro = () => {
 
     const { tituloForm } = useContext(CadastroContext)
 
@@ -13,10 +13,10 @@ const BodyCadastro = ({isTecnico}) => {
         <div className="my-16 flex justify-around items-center">
             <div className="w-9/12 border-2 border-solid border-opacity-10 border-black filter shadow-xl rounded-xl flex flex-col items-center py-16">
                 <h1 className="text-4xl">{tituloForm}</h1>
-                <Etapas isTecnico={isTecnico}/>
+                <Etapas />
                 <div className="w-4/5">
                     <ValidacoesProvider>
-                        <CamposUsuario isTecnico={isTecnico}/>
+                        <CamposUsuario />
                     </ValidacoesProvider>
                 </div>
             </div>

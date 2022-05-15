@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react'
-import BarInformacaoCliente from "../BarInformacaoCliente";
+import BarInformacaoCliente from "./BarInformacaoCliente";
 import { useRouter } from "next/router";
-import Carregamento from '../Carregamento';
-import { api } from '../../api/api';
-import EtapaStatus from './EtapaStatus';
-import EtapaLinhaStatus from './EtapaLinhaStatus';
-import Botao from '../Botao';
+import Carregamento from './Carregamento';
+import { api } from '../api/api';
+import EtapaStatus from './tecnico/EtapaStatus';
+import EtapaLinhaStatus from './tecnico/EtapaLinhaStatus';
+import Botao from './Botao';
 
 
 function PedidoStatusAndamento() {

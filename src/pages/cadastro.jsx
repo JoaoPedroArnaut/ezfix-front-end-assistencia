@@ -9,7 +9,7 @@ const Cadastro = () => {
         <>
             <Navbar />
             <CadastroProvider>
-                <BodyCadastro isTecnico={true} />
+                <BodyCadastro />
             </CadastroProvider>
             <Footer />
         </>
