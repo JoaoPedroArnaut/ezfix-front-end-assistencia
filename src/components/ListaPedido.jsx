@@ -56,9 +56,9 @@ const ListaPedido = () => {
 
                     <div className="flex flex-col items-center justify-center overflow-y-auto bg-blue-light w-full h-fit sm:w-96 p-8 sm:rounded-2xl filter drop-shadow-md sm:shadow-2xl">
                         <p className="font-bold text-2xl">Seu Pedido</p>
-                        <label for="toggle" class="flex items-center justify-center w-full cursor-pointer relative mb-4 mt-4">
-                            <input type="checkbox" id="toggle" class="sr-only" onChange={()=>setChecked(!checked)}/>
-                            <div class ={checked ? "bg-blue-dark_light border-2 border-blue-dark h-6 w-11 rounded-full" : "bg-gray border-2 border-blue h-6 w-11 rounded-full"}>
+                        <label htmlFor="toggle" className="flex items-center justify-center w-full cursor-pointer relative mb-4 mt-4">
+                            <input type="checkbox" id="toggle" className="sr-only" onChange={()=>setChecked(!checked)}/>
+                            <div className ={checked ? "bg-blue-dark_light border-2 border-blue-dark h-6 w-11 rounded-full" : "bg-gray border-2 border-blue h-6 w-11 rounded-full"}>
                                 <div className={checked ? "transform translate-x-full bg-blue w-6/12 h-full rounded-full" : "w-45 h-full bg-white rounded-full"}></div>
                             </div>
                             <p>Anexar</p>
