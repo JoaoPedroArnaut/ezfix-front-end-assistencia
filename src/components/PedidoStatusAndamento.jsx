@@ -4,8 +4,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from "next/router";
 import Carregamento from './Carregamento';
 import { api } from '../api/api';
-import EtapaStatus from './tecnico/EtapaStatus';
-import EtapaLinhaStatus from './tecnico/EtapaLinhaStatus';
+import EtapaStatus from './EtapaStatus';
+import EtapaLinhaStatus from './EtapaLinhaStatus';
 import Botao from './Botao';
 
 
