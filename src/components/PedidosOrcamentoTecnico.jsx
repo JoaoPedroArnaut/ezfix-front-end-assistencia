@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext, useEffect, useState } from 'react'
-import BarInformacaoCliente from "../BarInformacaoCliente";
+// import BarInformacaoCliente from "../BarInformacaoCliente";
 import BoxProdOrcamento from "../BoxProdOrcamento";
 import { useRouter } from "next/router";
 import Carregamento from '../Carregamento';
@@ -86,7 +86,7 @@ function pedidosOrcamentosTecnico() {
     if (carregado) {
         return (
             <>
-                <BarInformacaoCliente id={pedido.id} status={pedido.statusGeral} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} />
+                {/* <BarInformacaoCliente id={pedido.id} status={pedido.statusGeral} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} /> */}
                 <div className="p-8 flex flex-col items-center justify-evenly border-2 border-gray-dark border-solid rounded-xl rounded-t-none shadow-lg">
                     <Erros erros={erros} />
                     {pedido.itens.map((item, i) => <BoxProdOrcamento key={i} id={item.id} somaTotal={somaTotal} tipo={item.produto.tipo} marca={item.produto.marca} modelo={item.produto.modelo} problema={item.problema} descricao={item.descricao} />)}

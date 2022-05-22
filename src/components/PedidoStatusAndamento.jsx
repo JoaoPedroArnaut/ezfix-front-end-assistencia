@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react'
-import BarInformacaoCliente from "./BarInformacaoCliente";
+// import BarInformacaoCliente from "./BarInformacaoCliente";
 import { useRouter } from "next/router";
 import Carregamento from './Carregamento';
 import { api } from '../api/api';
@@ -78,7 +78,7 @@ function PedidoStatusAndamento() {
     if (carregado) {
         return (
             <>
-                <BarInformacaoCliente id={pedido.id} status={pedido.statusGeral} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} />
+                {/* <BarInformacaoCliente id={pedido.id} status={pedido.statusGeral} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} /> */}
                 <div className="p-10 h-96 flex items-center justify-center border-2 border-gray-dark border-solid rounded-xl rounded-t-none shadow-lg">
                     
                     <div className="w-6/12 flex mb-24 mr-20">
