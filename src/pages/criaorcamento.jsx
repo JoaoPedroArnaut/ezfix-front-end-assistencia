@@ -1,6 +1,6 @@
 import React from 'react'
-import SidebarTecnico from '../components/SidebarTecnico'
 import PedidosOrcamentosTecnico from '../components/PedidosOrcamentoTecnico'
+import SidebarTecnico from '../components/SidebarTecnico'
 
 const criaorcamento = () => {
     return (

@@ -6,7 +6,7 @@ import BoxProdOrcamento from "./BoxProdOrcamento";
 import { useRouter } from "next/router";
 import Carregamento from './Carregamento';
 import Erros from './Erros';
-import SidebarTecnico from '../SidebarTecnico';
+import SidebarTecnico from './SidebarTecnico';
 import { api } from '../api/api';
 
 

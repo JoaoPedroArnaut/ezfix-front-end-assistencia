@@ -38,7 +38,7 @@ const FormLogin = () => {
                     maxAge: 3600,
                     path: '/',
                 });
-                router.push('/DashboardInicio')
+                router.push('/dashboard')
             }, err => {
                 try{
                     if (err.response.status == 403){
