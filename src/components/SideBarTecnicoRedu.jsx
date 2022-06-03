@@ -32,48 +32,49 @@ const SidebarTecnicoRedu = ({ alternaSideBar }) => {
 </div> */}
 
                     <div className="absolute w-full flex flex-col justify-center items-center top-40">
-                        <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
-                            <Link href="/DashboardInicio" passHref>
+                        <Link href="/dashboard" passHref>
+                            <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
+
                                 <div>
                                     <span className="w-9"><FontAwesomeIcon icon={faHome} size="2x" /></span>
                                     {/* <span className="ml-4 text-xl">Inicío</span> */}
                                 </div>
-                            </Link>
-                        </li>
 
+                            </li>
+                        </Link>
                         <hr className="w-11/12 box mt-2 mb-2" />
+                        <Link href="/pedidos-tecnico" passHref>
+                            <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
 
-                        <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
-                            <Link href="/pedidosTecnico" passHref>
                                 <div>
                                     <span className="w-9"><FontAwesomeIcon icon={faReceipt} size="2x" /></span>
                                     {/* <span className="ml-4 text-xl">Pedidos</span> */}
                                 </div>
-                            </Link>
-                        </li>
 
+                            </li>
+                        </Link>
                         <hr className="w-11/12 box mt-2 mb-2" />
+                        <Link href="/perfiltecnico" passHref>
+                            <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
 
-                        <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
-                            <Link href="/perfiltecnico" passHref>
                                 <div>
                                     <span className="w-9"><FontAwesomeIcon icon={faUser} size="2x" /></span>
                                     {/* <span className="ml-4 text-xl">Perfil</span> */}
                                 </div>
-                            </Link>
-                        </li>
 
+                            </li>
+                        </Link>
                         <hr className="w-11/12 box mt-2 mb-2" />
+                        <Link href="/mensagens" passHref>
+                            <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
 
-                        <li className="flex justify-start items-center px-4 py-3 mt-2 w-auto rounded-2xl hover:bg-blue-dark hover:text-white text-black ">
-                            <Link href="/mensagens" passHref>
                                 <div>
                                     <span className="w-9 "><FontAwesomeIcon icon={faCommentAlt} size="2x" /></span>
                                     {/* <span className="ml-4 text-xl">Mensagens</span> */}
                                 </div>
-                            </Link>
-                        </li>
 
+                            </li>
+                        </Link>
                     </div>
 
                     <li onClick={() => { destroyCookie(null, "token"); destroyCookie(null, "id"); destroyCookie(null, "isTecnico"); router.push("/") }} className="absolute bottom-10 flex justify-start items-center p-2 mt-2 w-auto bg-blue-dark_light hover:bg-blue-dark rounded-2xl text-white ">

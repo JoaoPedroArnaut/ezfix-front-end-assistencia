@@ -17,7 +17,6 @@ export const SessaoProvider = ({ children }) => {
     const cookies = parseCookies()
 
     useEffect(() => {
-        console.log(user);
         api.get(`/assistencia/${cookies.id}`).then(response => {
             if (response.data != null) {
                 if (user == null) {
@@ -31,9 +30,7 @@ export const SessaoProvider = ({ children }) => {
     }, [user])
 
     useEffect(() => {
-        console.log(email);
         if (email != "") {
-            setToken(cookies.token)
             api.get(`/assistencia/email/${email}`, { headers: { Authorization: `Bearer ${cookies.token}` } })
                 .then(response => {
                     setUser(response.data);

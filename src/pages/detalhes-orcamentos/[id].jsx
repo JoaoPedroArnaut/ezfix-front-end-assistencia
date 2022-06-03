@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
 
-import SidebarTecnico from '../components/SidebarTecnico'
-import PedidoStatusAndamento from '../components/PedidoStatusAndamento';
+import SidebarTecnico from '../../components/SidebarTecnico'
+import PedidoStatusAndamento from '../../components/PedidoStatusAndamento';
 
 const detalhesorcamento = () => {
 

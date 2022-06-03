@@ -21,50 +21,53 @@ function PedidoStatusAndamento() {
     const [horaStatus, setHoraStatus] = useState();
 
     useEffect(() => {
-        api.get(`/orcamentos/${router.asPath.replace("/tecnico/detalhesorcamento?", "")}`).then(res => {
-            console.log(res.data);
-            setPedido(res.data)
-            setCarregado(true)
-        }, err => {
 
-        })
-    }, []);
+        let idOrcamento = router.query.id
+        if (idOrcamento != undefined) {
+            api.get(`/orcamentos/${idOrcamento}`).then(res => {
+                console.log(res.data);
+                setPedido(res.data)
+                setCarregado(true)
+            }, err => {
+
+            })
+        }
+
+    }, [router.query.id]);
 
     useEffect(() => {
         if(pedido != undefined){
-            if(pedido.statusGeral == "aguardando envio" || pedido.statusGeral == "reparo em andamento"){
+            if(pedido.status == "aguardando envio" || pedido.status == "reparo em andamento"){
                 setBotao(true)
             }
 
-            if(pedido.statusGeral == "aguardando envio"){
+            if(pedido.status == "aguardando envio"){
                 setTBotao("confirmar recebimento")
                 setEtapas([true])
-            }else if (pedido.statusGeral == "reparo em andamento"){
+            }else if (pedido.status == "reparo em andamento"){
                 setTBotao("Concluir Reparo")
                 setEtapas([true,true])
-            }else if (pedido.statusGeral == "reparo conluido"){
+            }else if (pedido.status == "reparo conluido"){
                 setEtapas([true,true,true])
-            }else if (pedido.statusGeral == "aguardando avalicao"){
+            }else if (pedido.status == "aguardando avalicao"){
                 setEtapas([true,true,true,true])
-            }else if (pedido.statusGeral == "concluido") {
+            }else if (pedido.status == "concluido") {
                 setEtapas([true,true,true,true,true])
             }
         }
     }, [pedido])
 
     function atualizaStatus(){
-        if(pedido.statusGeral == "aguardando envio"){
-            api.put(`/orcamentos`,{
-                "id":pedido.id,
+        if(pedido.status == "aguardando envio"){
+            api.put(`/orcamentos/atualizar-status/${pedido.idOrcamento}`,{
                 "status":"reparo em andamento"
             }).then(res => {
                 router.reload()
             },err => {
     
             })
-        } else if(pedido.statusGeral == "reparo em andamento"){
-            api.put(`/orcamentos`,{
-                "id":pedido.id,
+        } else if(pedido.status == "reparo em andamento"){
+            api.put(`/orcamentos/atualizar-status/${pedido.idOrcamento}`,{
                 "status":"reparo conluido"
             }).then(res => {
                 router.reload()
@@ -78,7 +81,7 @@ function PedidoStatusAndamento() {
     if (carregado) {
         return (
             <>
-                {/* <BarInformacaoCliente id={pedido.id} status={pedido.statusGeral} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} /> */}
+                {/* <BarInformacaoCliente id={pedido.id} status={pedido.status} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} /> */}
                 <div className="p-10 h-96 flex items-center justify-center border-2 border-gray-dark border-solid rounded-xl rounded-t-none shadow-lg">
                     
                     <div className="w-6/12 flex mb-24 mr-20">

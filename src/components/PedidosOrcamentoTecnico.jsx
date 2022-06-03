@@ -6,7 +6,6 @@ import BoxProdOrcamento from "./BoxProdOrcamento";
 import { useRouter } from "next/router";
 import Carregamento from './Carregamento';
 import Erros from './Erros';
-import SidebarTecnico from './SidebarTecnico';
 import { api } from '../api/api';
 
 
@@ -15,19 +14,24 @@ function pedidosOrcamentosTecnico() {
     const router = useRouter();
     const [pedido, setPedido] = useState()
     const [carregado, setCarregado] = useState(false)
-    const [valorTotal, setValorTotal] = useState(0.0)
+    const [valor, setValor] = useState('')
     const [itemEditado, setItemEditado] = useState([])
     const [erros, setErros] = useState([])
 
     useEffect(() => {
-        api.get(`/orcamentos/${router.asPath.replace("/criaorcamento?", "")}`).then(res => {
-            console.log(res.data);
-            setPedido(res.data)
-            setCarregado(true)
-        }, err => {
 
-        })
-    }, []);
+        let idOrcamento = router.query.id
+        if (idOrcamento != undefined) {
+            api.get(`/orcamentos/${idOrcamento}`).then(res => {
+                console.log(res.data);
+                setPedido(res.data)
+                setCarregado(true)
+            }, err => {
+
+            })
+        }
+
+    }, [router.query.id]);
 
     function somaTotal(i, v) {
 
@@ -55,47 +59,41 @@ function pedidosOrcamentosTecnico() {
     }
 
     function validEnvia() {
-
+        let idOrcamento = router.query.id
         let tudocerto
-        if (itemEditado.length < pedido.itens.length) {
-            setErros(["Nenhum campo pode estar zerado"])
-        } else {
-            itemEditado.map(i => {
-                if (i.v == 0) {
-                    tudocerto = false
-                    setErros(["Nenhum campo pode estar zerado"])
-                } else {
-                    tudocerto = true;
-                }
-            })
-        }
-        if (tudocerto) {
+        console.log(valor);
+        if (valor == '') {
+            setErros(["Valor do orçamento não pode estar em branco"])
+        } else if(valor <= 0) {
+            setErros(["Valor do orçamento não pode zerado"])
+        }else {
             setErros([])
-            api.put(`/orcamentos/${router.asPath.replace("/criaorcamento?", "")}`, {
-                "itemEditarForms": itemEditado,
-                "status": "aguardando sua resposta"
+            api.put(`/orcamentos/atualizar-valor-orcamento/${idOrcamento}`, {
+                "valor": valor
             }).then(res => {
-                router.push("/pedidosTecnico")
+                router.push("/pedidos-tecnico")
             }, err => {
+                setErros(["Ocorreu um erro tente novamente mais tarde"])
                 console.log(err.response);
             })
         }
-        console.log(erros);
     }
 
     if (carregado) {
         return (
             <>
-                <BarInformacaoCliente id={pedido.id} status={pedido.statusGeral} nome={pedido.solicitante.nome} data={pedido.dataSolicitacao} />
+                <BarInformacaoCliente id={pedido.idOrcamento} status={pedido.status} nome={pedido.nomeSolicitante} data={pedido.dataSolicitacao} />
                 <div className="p-8 flex flex-col items-center justify-evenly border-2 border-gray-dark border-solid rounded-xl rounded-t-none shadow-lg">
                     <Erros erros={erros} />
-                    {pedido.itens.map((item, i) => <BoxProdOrcamento key={i} id={item.id} somaTotal={somaTotal} tipo={item.produto.tipo} marca={item.produto.marca} modelo={item.produto.modelo} problema={item.problema} descricao={item.descricao} />)}
+                    {pedido.itemOrcamentoList.map((item, i) => <BoxProdOrcamento key={i} somaTotal={somaTotal} tipo={item.tipo} marca={item.marca} modelo={item.modelo} descricao={item.descricao} />)}
 
-                    <div className="flex flex-col w-full items-end">
-                        <div className="bg-blue-light_dark p-4 w-1/5 rounded-xl mb-1">
-                            <b>Total estimado: </b> <span>R${valorTotal}</span>
+                    <div className="flex flex-col w-full bg-blue-light_dark rounded-2xl p-4 items-start">
+                        <div className='font-bold'>Defina uma cotação estimada para esse orçamento:</div>
+                        <div className='flex w-full mt-2'>
+                            <input value={valor} onChange={e => setValor(e.target.value)} placeholder="Ex: 750,54" type="number" className="p-3 rounded-xl mr-1" />
+                            <button onClick={() => { validEnvia() }} className="text-white p-3 rounded-xl bg-blue-dark w-15 hover:bg-gray-dark hover:text-blue-dark_light transition-all shadow-lg">Confirmar Orçamento</button>
                         </div>
-                        <button onClick={() => { validEnvia() }} className="text-white p-4 rounded-xl bg-blue-dark w-15 mt-1 hover:bg-gray-dark hover:text-blue-dark_light transition-all shadow-lg">Confirmar Orçamento</button>
+
                     </div>
 
                 </div>

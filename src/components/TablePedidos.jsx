@@ -27,13 +27,6 @@ const TablePedidos = ({ nome, status, id, data, itens}) => {
     }
   }, [status])
 
-  function baixar() {
-    api.get(`/orcamentos/nota/${id}`,{responseType: 'blob'}).then(res => {
-      fileDownload(res.data,"itensPedido.txt")
-    }, err => {
-    })
-  }
-
   return (
     <>
       <div className={sectionExt ? "flex items-center justify-around py-2 bg-blue-light_dark rounded-t-2xl mt-7  "
@@ -50,8 +43,7 @@ const TablePedidos = ({ nome, status, id, data, itens}) => {
 
         </div>
         <div className="flex items-center w-48 justify-evenly">
-          <FontAwesomeIcon icon={faFileDownload} size="lg" className="hover:text-white cursor-pointer " onClick={baixar} />
-          <div onClick={() => { etapa == "Novo" ? router.push(`/criaorcamento?${id}`) : router.push(`/tecnico/detalhesorcamento?${id}`) }} className="bg-gray-opacity rounded-3xl py-2 px-4 text-white font-semibold hover:bg-gray-dark cursor-pointer">
+          <div onClick={() => { etapa == "Novo" ? router.push(`/orcamento/${id}`) : router.push(`/detalhes-orcamentos/${id}`) }} className="bg-gray-opacity rounded-3xl py-2 px-4 text-white font-semibold hover:bg-gray-dark cursor-pointer">
             Detalhes
           </div>
 
@@ -77,10 +69,10 @@ const TablePedidos = ({ nome, status, id, data, itens}) => {
 
                 {itens.map((item, i) =>
                 (<tr key={i}>
-                  <td className="border-gray border-solid border-t py-3 text-center">{item.produto.tipo}</td>
-                  <td className="border-gray border-solid border py-3 text-center">{item.produto.marca}</td>
-                  <td className="border-gray border-solid border py-3 text-center">{item.produto.modelo}</td>
-                  <td className="border-gray border-solid  border-t py-3 text-center">{item.problema}</td>
+                  <td className="border-gray border-solid border-t py-3 text-center">{item.tipo}</td>
+                  <td className="border-gray border-solid border py-3 text-center">{item.marca}</td>
+                  <td className="border-gray border-solid border py-3 text-center">{item.modelo}</td>
+                  <td className="border-gray border-solid  border-t py-3 text-center">{item.descricao}</td>
                 </tr>)
                 )}
               </tbody>

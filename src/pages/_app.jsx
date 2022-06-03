@@ -5,10 +5,13 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { SessaoProvider } from '../contexts/Sessao'
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import NProgress from 'nprogress'
 import '../styles/nprogress.css'
 import '../styles/globals.css'
 library.add(fab, faCoffee)
+
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }) {
 
@@ -42,7 +45,9 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <SessaoProvider>
+      <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
+      </QueryClientProvider>
     </SessaoProvider>
   )
 }

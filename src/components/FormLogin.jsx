@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { setCookie } from 'nookies';
 import Erros from './Erros';
 import { ValidacoesContext } from '../contexts/Validacoes';
-import {api} from '../api/api';
+import {api, setToken} from '../api/api';
 import { SessaoContext } from '../contexts/Sessao';
 
 const FormLogin = () => {
@@ -38,6 +38,7 @@ const FormLogin = () => {
                     maxAge: 3600,
                     path: '/',
                 });
+                setToken(res.data.token)
                 router.push('/dashboard')
             }, err => {
                 try{

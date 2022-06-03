@@ -33,17 +33,17 @@ const InicioAcompanhamento = ({id}) => {
 
                     <div className="flex flex-row bg-blue-light w-9/12 rounded-md shadow-lg mt-2 justify-around items-center">
 
-                        <pedidos className="flex flex-col items-center mt-4 mb-4 ml-3 mr-7  m-auto">
+                        <div className="flex flex-col items-center mt-4 mb-4 ml-3 mr-7  m-auto">
                             <span className="font-bold">{orcamentos}</span>
                             <span>Pedidos Criados Hoje</span>
-                        </pedidos>
+                        </div>
 
                         <div className="h-10 border-l-2 opacity-30" />
 
-                        <avaliacao className="flex flex-col items-center mt-4 mb-4 ml-2 mr-2 m-auto">
+                        <div className="flex flex-col items-center mt-4 mb-4 ml-2 mr-2 m-auto">
                             <span className="font-bold">{comentarios}</span>
                             <span>Avaliaçoes Feitas Hoje</span>
-                        </avaliacao>
+                        </div>
 
                     </div>
 
