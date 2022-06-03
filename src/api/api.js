@@ -21,6 +21,6 @@ export function setToken(token) {
 }
 
 export function url(){
-    // return "https://api.ezfix.com.br"
-    return "http://localhost:8080"
+    return "https://api.ezfix.com.br"
+    // return "http://localhost:8080"
 }
