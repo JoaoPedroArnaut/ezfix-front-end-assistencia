@@ -10,7 +10,7 @@ const CardAssistencia = ({ nome, avaliacao, categorias, endereco, id }) => {
 
         <div onClick={() => {router.push(`/perfilAssistencia?${id}`)}} className="cursor-pointer w-full bg-blue-light h-28 flex rounded-lg p-4">
             <div className="w-2/5 flex justify-around items-center">
-                <img src={`http://localhost:8080/assistencia/perfil/${id}`} alt="" className="rounded-full h-20" />
+                <img src={`https://api.ezfix.com.br/assistencia/perfil/${id}`} alt="" className="rounded-full h-20" />
             </div>
             <div className="w-4/5 p-2">
                 <p>{nome}</p>
