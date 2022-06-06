@@ -4,7 +4,7 @@ import React from 'react'
 const CardComentario = ({img,nome,comentario,nota}) => {
     return (
         <div className="flex flex-row items-center mt-4 mb-4 ml-5">
-            <img src={`http://localhost:8080/solicitante/perfil/${img}`} alt="" className="rounded-full w-16 h-16" />
+            <img src={`https://api.ezfix.com.br/solicitante/perfil/${img}`} alt="" className="rounded-full w-16 h-16" />
 
             <div className="h-8 border-l-2 mr-4 ml-4 opacity-30" />
 
