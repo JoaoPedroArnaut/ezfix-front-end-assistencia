@@ -36,7 +36,7 @@ const perfiltecnico = () => {
         var formdata = new FormData();
         formdata.append("img", e[0], e[0].name);
 
-        api.post(`http://localhost:8080/assistencia/perfil/${user.id}`, formdata)
+        api.post(`https://api.ezfix.com.br/assistencia/perfil/${user.id}`, formdata)
             .then(res => {
                 router.reload();
             }, err => {
