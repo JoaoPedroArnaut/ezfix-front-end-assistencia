@@ -32,7 +32,7 @@ const PedidoDetalhado = ({ id, itens, nomeAssistencia, status, data, idAssistenc
                                         <span>{data}</span>
                                     </div>
                                 </div>
-                                <img src={`http://localhost:8080/assistencia/perfil/${idAssistencia}`} alt={nomeAssistencia} className="rounded-full w-32 h-32" />
+                                <img src={`https://api.ezfix.com.br/assistencia/perfil/${idAssistencia}`} alt={nomeAssistencia} className="rounded-full w-32 h-32" />
                             </div>
 
                             <div className="pt-9 pb-9">
