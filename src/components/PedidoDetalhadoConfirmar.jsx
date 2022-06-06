@@ -31,7 +31,7 @@ const PedidoDetalhadoConfirmar = ({ nomeAssistencia, setEstagio, id, itens, stat
                                 </div>
                             </div>
 
-                            <img src={`http://localhost:8080/assistencia/perfil/${idAssistencia}`} alt={nomeAssistencia} className="rounded-full w-32 h-32" />
+                            <img src={`https://api.ezfix.com.br/assistencia/perfil/${idAssistencia}`} alt={nomeAssistencia} className="rounded-full w-32 h-32" />
 
                         </div>
                         <div className="py-4">
