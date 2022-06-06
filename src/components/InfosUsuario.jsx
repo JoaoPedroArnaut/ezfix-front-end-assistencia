@@ -15,7 +15,7 @@ const InfosUsuario = ({setNovoEndereco}) => {
 
         var formdata = new FormData();
         formdata.append("img", e[0], e[0].name);
-        api.post(`http://localhost:8080/solicitante/perfil/${user.cpf}`,formdata)
+        api.post(`https://api.ezfix.com.br/solicitante/perfil/${user.cpf}`,formdata)
         .then(res => {
             router.reload();
         },err => {
@@ -30,7 +30,7 @@ const InfosUsuario = ({setNovoEndereco}) => {
             <div className="w-full flex justify-around">
                 <div className="sm:w-4/5 mt-8 mb-20 p-10 border-2 border-solid border-opacity-10 border-black filter shadow-xl rounded-xl">
                     <div className="flex mb-10">
-                        <img src={`http://localhost:8080/solicitante/perfil/${user.cpf}`} alt="img" width="160px" className="rounded-full" />
+                        <img src={`https://api.ezfix.com.br/solicitante/perfil/${user.cpf}`} alt="img" width="160px" className="rounded-full" />
                         <div className="ml-8 text-3xl font-bold flex flex-col">
                             <span>{user.nome}</span>
                             <div className="text-base mt-16">
